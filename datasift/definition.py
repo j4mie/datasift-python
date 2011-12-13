@@ -26,7 +26,7 @@ class DataSiftDefinition(object):
           'api_key': self.user.api_key
         }
         url = "http://%s/%s" % (API_HOST, url)
-        res = requests.get(url, params=params)
+        res = requests.post(url, data=params)
         rdata = json.loads(res.content)
         if res.status_code != 200 or 'error' in rdata:
             msg = rdata.get('error', res.content)
